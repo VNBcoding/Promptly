@@ -56,11 +56,38 @@ Promptly/
 
 ### Validation API
 
+#### Rule-based backend (default)
+
 ```bash
 cd validation-api
 pip install -r requirements.txt
 python app.py
 ```
+
+#### LLM backend (phi4-mini via Ollama)
+
+Ensure [Ollama](https://ollama.com/download) is installed and `phi4-mini` is pulled:
+
+```bash
+ollama pull phi4-mini
+```
+
+Then run each command separately:
+
+```bash
+ollama serve
+```
+```bash
+cd validation-api
+```
+```bash
+set VALIDATOR_BACKEND=llm
+```
+```bash
+python app.py
+```
+
+> Note: If Ollama is already running in the system tray, skip `ollama serve`.
 
 The API runs on `http://localhost:5000` by default.
 
