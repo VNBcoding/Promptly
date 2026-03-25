@@ -1,0 +1,101 @@
+/* content-styles.css - In-page UI styles for AI Compliance Guard */
+
+#ai-compliance-guard-ui {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 10px 0;
+  padding: 12px 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  border-left: 4px solid #888;
+  background: #fff;
+  color: #212121;
+  max-width: 720px;
+  z-index: 9999;
+  position: relative;
+  /* Ensure it's always visible above site content */
+}
+
+/* State variants */
+#ai-compliance-guard-ui.acg-pending { border-left-color: #9d5d00; background: #fff9f0; }
+#ai-compliance-guard-ui.acg-valid { border-left-color: #107c10; background: #f0fdf0; }
+#ai-compliance-guard-ui.acg-invalid { border-left-color: #c42b1c; background: #fff0f0; }
+#ai-compliance-guard-ui.acg-offline { border-left-color: #616161; background: #f5f5f5; }
+#ai-compliance-guard-ui.acg-no-policy { border-left-color: #9d5d00; background: #fff9f0; }
+#ai-compliance-guard-ui.acg-error { border-left-color: #c42b1c; background: #fff0f0; }
+
+/* Header */
+.acg-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.acg-icon { font-size: 16px; }
+
+.acg-title {
+  font-weight: 600;
+  font-size: 13px;
+  color: #1a1a1a;
+}
+
+/* Body */
+.acg-body p { margin-bottom: 6px; }
+.acg-body p:last-child { margin-bottom: 0; }
+
+.acg-hint { font-size: 12px; color: #616161; }
+
+/* Animated dots for pending state */
+.acg-dots::after {
+  content: '';
+  animation: acg-dots-anim 1.2s steps(1, end) infinite;
+}
+
+@keyframes acg-dots-anim {
+  0%   { content: '.'; }
+  33%  { content: '..'; }
+  66%  { content: '...'; }
+}
+
+/* Reasons & violations lists */
+.acg-reasons, .acg-violations {
+  margin: 8px 0;
+  padding-left: 20px;
+  font-size: 12px;
+}
+
+.acg-reasons li, .acg-violations li { margin-bottom: 4px; }
+
+/* Autocorrect section */
+.acg-autocorrect-section {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.acg-autocorrect-label { font-weight: 600; }
+
+/* Action buttons */
+.acg-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.acg-btn {
+  padding: 7px 16px;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.acg-btn-accept { background: #107c10; color: white; }
+.acg-btn-accept:hover { background: #0a5e0a; }
+
+.acg-btn-reject { background: transparent; color: #c42b1c; border: 1px solid #c42b1c; }
+.acg-btn-reject:hover { background: #fde7e9; }

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Guard</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="popup-container">
+    <header class="popup-header">
+      <img src="../icons/icon48.png" alt="ACG Logo" class="popup-logo" />
+      <h1 class="popup-title">AI Guard</h1>
+    </header>
+
+    <!-- Policy Status Section -->
+    <section class="section" id="policy-status-section">
+      <h2 class="section-title">Organization Policy</h2>
+      <div id="policy-status" class="policy-status policy-status--none">
+        No policy uploaded
+      </div>
+      <div id="policy-meta" class="policy-meta hidden"></div>
+    </section>
+
+    <!-- Policy Input Section -->
+    <section class="section" id="policy-input-section">
+      <h2 class="section-title">Upload or Paste Policy</h2>
+
+      <div class="tab-bar">
+        <button class="tab-btn tab-btn--active" id="tab-paste">Paste Text</button>
+        <button class="tab-btn" id="tab-upload">Upload PDF</button>
+      </div>
+
+      <!-- Paste Tab -->
+      <div id="panel-paste" class="tab-panel">
+        <textarea
+          id="policy-text-input"
+          class="policy-textarea"
+          placeholder="Paste your organization's AI usage policy here..."
+          rows="8"
+          spellcheck="false"
+        ></textarea>
+      </div>
+
+      <!-- Upload Tab -->
+      <div id="panel-upload" class="tab-panel hidden">
+        <label class="file-upload-label" for="policy-pdf-input">
+          <span id="file-label-text">Choose PDF file&hellip;</span>
+          <input
+            type="file"
+            id="policy-pdf-input"
+            accept="application/pdf"
+            class="file-input-hidden"
+          />
+        </label>
+        <p id="pdf-extract-status" class="extract-status hidden"></p>
+      </div>
+
+      <!-- Save Button -->
+      <button id="save-policy-btn" class="btn btn-primary" disabled>
+        Save Policy
+      </button>
+
+      <!-- Clear Button -->
+      <button id="clear-policy-btn" class="btn btn-danger">
+        Clear Policy
+      </button>
+
+      <p id="save-status" class="save-status hidden"></p>
+    </section>
+
+    <footer class="popup-footer">
+      <p>Validation runs locally. No data is sent externally.</p>
+    </footer>
+  </div>
+
+  <script src="../utils/constants.js"></script>
+  <script src="../utils/storage.js"></script>
+  <script src="../lib/pdf.min.js"></script>
+  <script src="../utils/pdf-extractor.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

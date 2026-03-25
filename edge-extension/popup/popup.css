@@ -1,0 +1,213 @@
+/* popup.css - AI Compliance Guard Extension Popup Styles */
+
+:root {
+  --color-primary: #0f6cbd;
+  --color-primary-dark: #0a4f9e;
+  --color-danger: #c42b1c;
+  --color-danger-dark: #a32012;
+  --color-success: #107c10;
+  --color-warning: #9d5d00;
+  --color-bg: #ffffff;
+  --color-surface: #f5f5f5;
+  --color-border: #d1d1d1;
+  --color-text: #212121;
+  --color-text-muted: #616161;
+  --radius: 6px;
+  --shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 13px;
+  color: var(--color-text);
+  background: var(--color-bg);
+  width: 360px;
+  min-height: 200px;
+}
+
+.popup-container { padding: 16px; }
+
+/* Header */
+.popup-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.popup-logo { width: 28px; height: 28px; }
+
+.popup-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+/* Sections */
+.section { margin-bottom: 16px; }
+
+.section-title {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-text-muted);
+  margin-bottom: 8px;
+}
+
+/* Policy Status */
+.policy-status {
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.policy-status--none {
+  background: #fef2cd;
+  color: var(--color-warning);
+  border: 1px solid #f5d27b;
+}
+
+.policy-status--loaded {
+  background: #dff6dd;
+  color: var(--color-success);
+  border: 1px solid #9fd89f;
+}
+
+.policy-meta {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+}
+
+/* Tab Bar */
+.tab-bar {
+  display: flex;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 7px;
+  background: var(--color-surface);
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  transition: background 0.15s;
+}
+
+.tab-btn--active {
+  background: var(--color-primary);
+  color: white;
+}
+
+.tab-btn:hover:not(.tab-btn--active) { background: #e0e0e0; }
+
+/* Tab Panels */
+.tab-panel { display: block; }
+.tab-panel.hidden { display: none; }
+
+/* Textarea */
+.policy-textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-size: 12px;
+  font-family: inherit;
+  resize: vertical;
+  line-height: 1.5;
+  color: var(--color-text);
+  margin-bottom: 8px;
+}
+
+.policy-textarea:focus {
+  outline: 2px solid var(--color-primary);
+  border-color: transparent;
+}
+
+/* File Upload */
+.file-upload-label {
+  display: block;
+  padding: 20px;
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius);
+  text-align: center;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  font-size: 12px;
+  margin-bottom: 8px;
+  transition: border-color 0.15s;
+}
+
+.file-upload-label:hover { border-color: var(--color-primary); }
+
+.file-input-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.extract-status {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  margin-bottom: 8px;
+}
+
+.extract-status.hidden { display: none; }
+
+/* Buttons */
+.btn {
+  display: block;
+  width: 100%;
+  padding: 9px;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 6px;
+  transition: background 0.15s;
+}
+
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btn-primary { background: var(--color-primary); color: white; }
+.btn-primary:hover:not(:disabled) { background: var(--color-primary-dark); }
+
+.btn-danger { background: transparent; color: var(--color-danger); border: 1px solid var(--color-danger); }
+.btn-danger:hover { background: #fde7e9; }
+
+/* Status Messages */
+.save-status {
+  font-size: 12px;
+  padding: 6px 8px;
+  border-radius: var(--radius);
+  margin-top: 6px;
+}
+
+.save-status.hidden { display: none; }
+.save-status.success { background: #dff6dd; color: var(--color-success); }
+.save-status.error { background: #fde7e9; color: var(--color-danger); }
+
+/* Footer */
+.popup-footer {
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+.hidden { display: none; }

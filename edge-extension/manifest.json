@@ -1,0 +1,78 @@
+{
+  "manifest_version": 3,
+  "name": "AI Guard",
+  "version": "1.0.0",
+  "description": "Pre-submission compliance guardrail for external AI tools. Validates prompts against your organization policy before submission.",
+  "author": "Your Organization",
+
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png"
+    },
+    "default_title": "AI Guard"
+  },
+
+  "background": {
+    "service_worker": "background/service-worker.js",
+    "type": "module"
+  },
+
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chatgpt.com/*",
+        "https://chat.openai.com/*"
+      ],
+      "js": [
+        "utils/constants.js",
+        "utils/storage.js",
+        "lib/pdf.min.js",
+        "utils/pdf-extractor.js",
+        "adapters/adapter-base.js",
+        "adapters/chatgpt-adapter.js",
+        "adapters/copilot-adapter.js",
+        "adapters/adapter-registry.js",
+        "content/ui-component.js",
+        "content/submit-interceptor.js",
+        "content/prompt-extractor.js",
+        "content/content-main.js"
+      ],
+      "css": ["content/content-styles.css"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "tabs"
+  ],
+
+  "host_permissions": [
+    "https://chatgpt.com/*",
+    "https://chat.openai.com/*",
+    "https://copilot.microsoft.com/*",
+    "http://localhost:5000/*"
+  ],
+
+  "web_accessible_resources": [
+    {
+      "resources": ["lib/pdf.worker.min.js"],
+      "matches": [
+        "https://chatgpt.com/*",
+        "https://chat.openai.com/*",
+        "https://copilot.microsoft.com/*"
+      ]
+    }
+  ]
+}
