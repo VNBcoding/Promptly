@@ -29,9 +29,9 @@ class CopilotAdapter extends SiteAdapterBase {
 
   getUiInsertionPoint(promptEl) {
     if (!promptEl) return null;
-    const container = promptEl.closest('[class*="input"]') ||
-                      promptEl.closest('form') ||
-                      promptEl.parentElement;
-    return container || promptEl.parentElement;
+    return promptEl.closest('form') ||
+           promptEl.closest('[class*="composer"]') ||
+           promptEl.closest('[class*="input"]')?.parentElement ||
+           promptEl.parentElement;
   }
 }
