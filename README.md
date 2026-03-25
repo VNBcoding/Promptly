@@ -10,6 +10,8 @@ AI Guard was designed for the Ontario Public Service (OPS) to address the risk o
 
 ```
 Promptly/
+├── docs/
+│   └── screenshots/      # before.png, during.png, after.png, modified.png, auditLog.png
 ├── edge-extension/       # Browser extension (Manifest V3)
 │   ├── adapters/         # Platform-specific adapters (ChatGPT, Copilot)
 │   ├── background/       # Service worker
@@ -32,6 +34,18 @@ Promptly/
 3. The API validates the content against the configured policy ruleset.
 4. If violations are found, the user is warned and offered an autocorrected version.
 5. All flagged interactions are logged locally in an audit log.
+
+### Before — Prompt entered, not yet submitted
+![Before](docs/screenshots/before.png)
+
+### During — Prompt intercepted, validation in progress
+![During](docs/screenshots/during.png)
+
+### After — Warning shown with autocorrect suggestion
+![After](docs/screenshots/after.png)
+
+### Modified — Autocorrected prompt accepted and ready to submit
+![Modified](docs/screenshots/modified.png)
 
 ## Supported Platforms
 
@@ -73,6 +87,8 @@ Set `VALIDATOR_BACKEND` in `config.py`:
 ## Audit Logging
 
 Flagged prompts are logged to an Excel file (`.xlsx`) locally. Logs include platform, prompt text, violation types, and whether autocorrect was accepted. No data is sent externally.
+
+![Audit Log](docs/screenshots/auditLog.png)
 
 ## Deployment Context
 
