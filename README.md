@@ -49,8 +49,8 @@ Promptly/
 
 ## Supported Platforms
 
-- ChatGPT (`chatgpt.com`, `chat.openai.com`)
-- Microsoft Copilot (`copilot.microsoft.com`)
+- ChatGPT
+- Microsoft Copilot
 
 ## Setup
 
